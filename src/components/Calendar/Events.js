@@ -18,6 +18,10 @@ const FetchEvents = () => {
     console.log(events.value);
   };
 
+  const formatDate = (currentDate) => {
+    return currentDate;
+  };
+
   useEffect(() => {
     getEvents();
   }, []);
@@ -29,7 +33,7 @@ const FetchEvents = () => {
           return (
             <EventsItem key={ID}>
               <a href="/">
-                {Title} - {EventStartDate}
+                {Title} - {formatDate(EventStartDate)}
               </a>
             </EventsItem>
           );
