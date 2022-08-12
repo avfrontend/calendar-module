@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Events, EventsItem } from "./CalendarStyles";
+import { Events, EventsItem, EventLink } from "./CalendarStyles";
+import Dialog from "./Dialog";
 
 const url =
   "https://prod-179.westeurope.logic.azure.com/workflows/7c84997dd6894507a60796acb06e5c43/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=6hFoizfo2w62d0iQK_Zyt7a3Ycr9akAkXdCPAG0ecwQ&usr=41767261616d";
 
 const FetchEvents = () => {
   const [events, setEvents] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [dialogData, setDialogData] = useState(null);
 
   const getEvents = async () => {
     const response = await fetch(url, {
@@ -49,13 +52,25 @@ const FetchEvents = () => {
           const { ID, Title, EventStartDate } = event;
           return (
             <EventsItem key={ID}>
-              <a href="/">
+              <EventLink
+                to="/"
+                onClick={() => {
+                  setOpen(true);
+                  setDialogData(event);
+                }}
+              >
                 {Title} - {formatDate(EventStartDate)}
-              </a>
+              </EventLink>
             </EventsItem>
           );
         })}
       </Events>
+      <Dialog
+        open={open}
+        setOpen={setOpen}
+        city={dialogData.City}
+        // title={dialogData.Title}
+      />
     </>
   );
 };

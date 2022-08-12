@@ -1,4 +1,5 @@
 import styled from "styled-components/macro";
+import { Link } from "react-router-dom";
 
 export const Calendar = styled.div`
   padding-top: 20px;
@@ -45,4 +46,8 @@ export const EventsItem = styled.div`
       color: rgb(213, 17, 31);
     }
   }
+`;
+
+export const EventLink = styled(Link)`
+  color: blue;
 `;
