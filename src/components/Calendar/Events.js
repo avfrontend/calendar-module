@@ -65,12 +65,14 @@ const FetchEvents = () => {
           );
         })}
       </Events>
-      <Dialog
-        open={open}
-        setOpen={setOpen}
-        city={dialogData.City}
-        // title={dialogData.Title}
-      />
+      {dialogData && (
+        <Dialog
+          open={open}
+          setOpen={setOpen}
+          city={dialogData.City}
+          title={dialogData.Title}
+        />
+      )}
     </>
   );
 };

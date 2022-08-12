@@ -16,10 +16,10 @@ function DialogBox(props) {
         aria-labelledby="dialog-title"
         aria-describedby="dialog-description"
       >
-        <DialogTitle id="dialog-title">Submit the test?</DialogTitle>
+        <DialogTitle id="dialog-title">{props.title}</DialogTitle>
         <DialogContent>
           <DialogContentText id="dialog-description">
-            Are you sure you want to submit the test? 
+            City:
             {props.city}
           </DialogContentText>
         </DialogContent>
