@@ -18,8 +18,25 @@ const FetchEvents = () => {
     console.log(events.value);
   };
 
-  const formatDate = (currentDate) => {
-    return currentDate;
+  const formatDate = (eventStartDate) => {
+    let currentDate = new Date();
+    let currentMonth = currentDate.getMonth() + 1;
+    let currentDay = currentDate.getDate();
+    let currentYear = currentDate.getFullYear();
+
+    let eventYear = Number(eventStartDate.substring(4, 0));
+    let eventMonth = Number(eventStartDate.substring(7, 5));
+    let eventDay = Number(eventStartDate.substring(10, 8));
+
+    if (
+      (currentYear === eventYear) &
+      ((currentMonth === eventMonth) &
+        ((eventDay - currentDay <= 7) & (eventDay - currentDay > 0)))
+    ) {
+      return "in " + (eventDay - currentDay) + " days";
+    } else {
+      return eventDay + "/" + eventMonth + "/" + eventYear;
+    }
   };
 
   useEffect(() => {

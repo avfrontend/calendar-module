@@ -34,11 +34,13 @@ export const EventsItem = styled.div`
     font-size: 14px;
     color: rgb(3, 120, 124);
     text-decoration: none;
+    display: block;
   }
 
   &:hover {
     background-color: rgb(237, 235, 233);
     transition: all 0.2s ease-in-out;
+    cursor: pointer;
     a {
       color: rgb(213, 17, 31);
     }
