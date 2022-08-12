@@ -5,9 +5,9 @@ import Dialog from "./Dialog";
 const url =
   "https://prod-179.westeurope.logic.azure.com/workflows/7c84997dd6894507a60796acb06e5c43/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=6hFoizfo2w62d0iQK_Zyt7a3Ycr9akAkXdCPAG0ecwQ&usr=41767261616d";
 
-const FetchEvents = () => {
+const CalendarEvents = () => {
   const [events, setEvents] = useState([]);
-  const [open, setOpen] = useState(false);
+  const [openDialog, setOpenDialog] = useState(false);
   const [dialogData, setDialogData] = useState(null);
 
   const getEvents = async () => {
@@ -55,7 +55,7 @@ const FetchEvents = () => {
               <EventLink
                 to="/"
                 onClick={() => {
-                  setOpen(true);
+                  setOpenDialog(true);
                   setDialogData(event);
                 }}
               >
@@ -65,16 +65,20 @@ const FetchEvents = () => {
           );
         })}
       </Events>
+      {console.log(dialogData)}
       {dialogData && (
         <Dialog
-          open={open}
-          setOpen={setOpen}
+          openDialog={openDialog}
+          setOpenDialog={setOpenDialog}
           city={dialogData.City}
           title={dialogData.Title}
+          src={dialogData.BannerUrl}
+          alt={dialogData.Title}
+          category={dialogData.Category}
         />
       )}
     </>
   );
 };
 
-export default FetchEvents;
+export default CalendarEvents;

@@ -2,8 +2,7 @@ import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
 
 export const Calendar = styled.div`
-  padding-top: 20px;
-  padding-left: 20px;
+  padding: 20px;
   width: 100%;
   max-width: 380px;
 `;
@@ -31,12 +30,6 @@ export const EventsItem = styled.div`
   &:nth-child(odd) {
     background: rgb(243, 242, 241);
   }
-  a {
-    font-size: 14px;
-    color: rgb(3, 120, 124);
-    text-decoration: none;
-    display: block;
-  }
 
   &:hover {
     background-color: rgb(237, 235, 233);
@@ -50,4 +43,34 @@ export const EventsItem = styled.div`
 
 export const EventLink = styled(Link)`
   color: blue;
+  font-size: 14px;
+  color: rgb(3, 120, 124);
+  text-decoration: none;
+  display: block;
+`;
+
+export const DialogRow = styled.div`
+  display: flex;
+`;
+
+export const DialogImageWrapper = styled.div`
+  width: 70%;
+`;
+
+export const DialogImage = styled.img`
+  width: 100%;
+  object-fit: contain;
+`;
+
+export const DialogGrayBox = styled.div`
+  background: rgb(243, 242, 241);
+  width: 30%;
+  position: relative;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  h4 {
+    font-weight: 800;
+  }
 `;

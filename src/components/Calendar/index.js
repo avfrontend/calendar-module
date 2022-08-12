@@ -1,6 +1,6 @@
 import React from "react";
 import { Calendar, CalendarTitle, CalendarHeader } from "./CalendarStyles";
-import FetchEvents from "./Events";
+import CalendarEvents from "./CalendarEvents";
 import { AiOutlineCalendar } from "react-icons/ai";
 
 function index() {
@@ -11,7 +11,7 @@ function index() {
           <AiOutlineCalendar />
           <CalendarTitle>Upcoming Events</CalendarTitle>
         </CalendarHeader>
-        <FetchEvents />
+        <CalendarEvents />
       </Calendar>
     </>
   );
