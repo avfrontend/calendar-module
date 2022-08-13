@@ -51,11 +51,18 @@ export const EventLink = styled(Link)`
 
 export const DialogHeader = styled.div`
   display: flex;
-  height: 280px; ;
+  height: 280px;
+  @media screen and (max-width: 768px) {
+    flex-direction: column-reverse;
+    height: auto;
+  }
 `;
 
 export const DialogImageWrapper = styled.div`
   width: 70%;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const DialogImage = styled.img`
@@ -86,22 +93,30 @@ export const DialogGrayBox = styled.div`
       cursor: pointer;
     }
   }
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const DialogBody = styled.div`
   display: flex;
   padding-bottom: 100px;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    padding-bottom: 50px;
+  }
 `;
 
 export const DialogDescWrapper = styled.div`
   width: 70%;
-  padding: 20px;
+  padding: 10px;
   h1 {
     font-weight: 600;
     font-size: 22px;
     margin-bottom: 10px;
   }
-  h2 {
+  h2,
+  h3 {
     font-weight: 600;
     font-size: 20px;
     margin-bottom: 10px;
@@ -137,6 +152,9 @@ export const DialogDescWrapper = styled.div`
     padding-left: 30px;
     margin-bottom: 10px;
   }
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const DialogDescPar = styled.p`
@@ -159,6 +177,9 @@ export const DialogEventDetailsWrapper = styled.div`
   p {
     font-size: 14px;
   }
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const DialogAddCalendarLink = styled(Link)`
@@ -167,8 +188,9 @@ export const DialogAddCalendarLink = styled(Link)`
 `;
 
 export const DialogFooter = styled.div`
-  padding: 20px;
+  padding: 10px;
 `;
+
 export const DialogFooterSeparator = styled.div`
   width: 100%;
   height: 2px;

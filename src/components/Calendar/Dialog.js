@@ -57,7 +57,7 @@ function DialogBox(props) {
               <p>
                 {props.dayShortName}, {props.dayNumber} {props.monthShortName}{" "}
                 {props.yearNumber}
-                {props.fullDayEvent === "TRUE" ? " - Full Day Event" : "false"}
+                {props.fullDayEvent === "TRUE" ? " - Full Day Event" : ""}
               </p>
             </div>
             <DialogAddCalendarLink to="/">
@@ -77,11 +77,11 @@ function DialogBox(props) {
         <DialogFooter>
           <DialogFooterSeparator />
           <p>
-            Created by {props.author} on {props.createdDate} at
+            Created by {props.author} on {props.createdDate} at{" "}
             {props.createdTime}
           </p>
           <p>
-            Modified by {props.editor} on {props.modifiedDate} at
+            Modified by {props.editor} on {props.modifiedDate} at{" "}
             {props.modifiedTime}
           </p>
         </DialogFooter>
