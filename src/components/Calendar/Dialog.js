@@ -1,18 +1,16 @@
+import { Dialog } from "@material-ui/core";
 import {
-  Button,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogContentText,
-  DialogActions,
-} from "@material-ui/core";
-import {
-  DialogRow,
+  DialogHeader,
   DialogImageWrapper,
   DialogImage,
   DialogGrayBox,
   DialogDescWrapper,
   DialogEventDetailsWrapper,
+  DialogDescPar,
+  DialogBody,
+  DialogAddCalendarLink,
+  DialogFooter,
+  DialogFooterSeparator,
 } from "./CalendarStyles";
 import { FaTimes } from "react-icons/fa";
 
@@ -22,44 +20,71 @@ function DialogBox(props) {
       <Dialog
         open={props.openDialog}
         onClose={() => props.setOpenDialog(false)}
-        maxWidth="xl"
+        maxWidth="lg"
         aria-labelledby="dialog-title"
         aria-describedby="dialog-description"
       >
-        <DialogRow>
+        <DialogHeader>
           <DialogImageWrapper>
-            <DialogImage src={props?.src} alt={props.title} />
+            {props.src ? (
+              <DialogImage src={props.src} alt={props.title} />
+            ) : (
+              <DialogImage src={props.srcDummy} alt={props.title} />
+            )}
           </DialogImageWrapper>
           <DialogGrayBox>
             <FaTimes onClick={() => props.setOpenDialog(false)} />
-            <p>Aug 09</p>
+            <p>
+              {props.monthShortName} <br></br>
+              {props.dayNumber}
+            </p>
             <h4>{props.title}</h4>
             <small>{props.category}</small>
           </DialogGrayBox>
-        </DialogRow>
-        <DialogRow>
+        </DialogHeader>
+        <DialogBody>
           <DialogDescWrapper>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
-              nemo quam laboriosam alias voluptatum soluta accusantium, suscipit
-              praesentium eaque necessitatibus. Officia mollitia voluptatum,
-              rerum eius voluptatibus quisquam nam deserunt iure?
-            </p>
+            <DialogDescPar>DESCRIPTION</DialogDescPar>
+            {props.description && (
+              <div
+                dangerouslySetInnerHTML={{ __html: props.description }}
+              ></div>
+            )}
           </DialogDescWrapper>
-          <DialogEventDetailsWrapper>Details</DialogEventDetailsWrapper>
-        </DialogRow>
-        <DialogTitle id="dialog-title">{props.title}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="dialog-description">
-            City: {props.city}
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => props.setOpenDialog(false)}>Cancel</Button>
-          <Button autoFocus onClick={() => props.setOpenDialog(false)}>
-            Submit
-          </Button>
-        </DialogActions>
+          <DialogEventDetailsWrapper>
+            <h4>DATE AND TIME</h4>
+            <div>
+              <p>
+                {props.dayShortName}, {props.dayNumber} {props.monthShortName}{" "}
+                {props.yearNumber}
+                {props.fullDayEvent === "TRUE" ? " - Full Day Event" : "false"}
+              </p>
+            </div>
+            <DialogAddCalendarLink to="/">
+              Add to Calendar
+            </DialogAddCalendarLink>
+            <h4>LOCATION</h4>
+            <div>
+              <p>{props.addressLine1} </p>
+              {props.addressLine2 && <p>{props.addressLine2} </p>}
+              <p> {props.city} </p>
+              <p> {props.postCode} </p>
+              <p> {props.country} </p>
+            </div>
+            <DialogAddCalendarLink to="/">View Map</DialogAddCalendarLink>
+          </DialogEventDetailsWrapper>
+        </DialogBody>
+        <DialogFooter>
+          <DialogFooterSeparator />
+          <p>
+            Created by {props.author} on {props.createdDate} at
+            {props.createdTime}
+          </p>
+          <p>
+            Modified by {props.editor} on {props.modifiedDate} at
+            {props.modifiedTime}
+          </p>
+        </DialogFooter>
       </Dialog>
     </>
   );
