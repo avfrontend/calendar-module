@@ -73,4 +73,17 @@ export const DialogGrayBox = styled.div`
   h4 {
     font-weight: 800;
   }
+  svg {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+`;
+
+export const DialogDescWrapper = styled.div`
+  width: 70%;
+`;
+
+export const DialogEventDetailsWrapper = styled.div`
+  width: 30%;
 `;

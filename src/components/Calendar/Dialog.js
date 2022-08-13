@@ -11,7 +11,10 @@ import {
   DialogImageWrapper,
   DialogImage,
   DialogGrayBox,
+  DialogDescWrapper,
+  DialogEventDetailsWrapper,
 } from "./CalendarStyles";
+import { FaTimes } from "react-icons/fa";
 
 function DialogBox(props) {
   return (
@@ -28,10 +31,22 @@ function DialogBox(props) {
             <DialogImage src={props?.src} alt={props.title} />
           </DialogImageWrapper>
           <DialogGrayBox>
+            <FaTimes onClick={() => props.setOpenDialog(false)} />
             <p>Aug 09</p>
             <h4>{props.title}</h4>
             <small>{props.category}</small>
           </DialogGrayBox>
+        </DialogRow>
+        <DialogRow>
+          <DialogDescWrapper>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
+              nemo quam laboriosam alias voluptatum soluta accusantium, suscipit
+              praesentium eaque necessitatibus. Officia mollitia voluptatum,
+              rerum eius voluptatibus quisquam nam deserunt iure?
+            </p>
+          </DialogDescWrapper>
+          <DialogEventDetailsWrapper>Details</DialogEventDetailsWrapper>
         </DialogRow>
         <DialogTitle id="dialog-title">{props.title}</DialogTitle>
         <DialogContent>
