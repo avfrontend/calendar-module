@@ -9,7 +9,8 @@ import {
   getDayShortName,
   formatTime,
   formatDate,
-} from "./DateModifiers";
+  removeSymbolsDate,
+} from "./dateModifiers";
 
 const url =
   "https://prod-179.westeurope.logic.azure.com/workflows/7c84997dd6894507a60796acb06e5c43/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=6hFoizfo2w62d0iQK_Zyt7a3Ycr9akAkXdCPAG0ecwQ&usr=41767261616d";
@@ -58,10 +59,14 @@ const CalendarEvents = () => {
         <Dialog
           openDialog={openDialog}
           setOpenDialog={setOpenDialog}
+          id={dialogData.ID}
           title={dialogData.Title}
           src={dialogData.BannerUrl}
           srcDummy={require("../../images/placeholder-image.png")}
           category={dialogData.Category}
+          fullStartDate={removeSymbolsDate(dialogData.EventStartDate)}
+          fullEndDate={removeSymbolsDate(dialogData.EventEndDate)}
+          fullCreatedDate={removeSymbolsDate(dialogData.Created)}
           dayNumber={getDayNumber(dialogData.EventStartDate)}
           monthShortName={getMonthShortName(dialogData.EventStartDate)}
           dayShortName={getDayShortName(dialogData.EventStartDate)}

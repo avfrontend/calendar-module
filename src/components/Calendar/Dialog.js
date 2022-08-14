@@ -13,6 +13,7 @@ import {
   DialogFooterSeparator,
 } from "./CalendarStyles";
 import { FaTimes } from "react-icons/fa";
+import { saveCallInvite } from "./saveEvent";
 
 function DialogBox(props) {
   return (
@@ -60,7 +61,12 @@ function DialogBox(props) {
                 {props.fullDayEvent === "TRUE" ? " - Full Day Event" : ""}
               </p>
             </div>
-            <DialogAddCalendarLink to="/">
+            <DialogAddCalendarLink
+              to="/"
+              onClick={() => {
+                saveCallInvite(props);
+              }}
+            >
               Add to Calendar
             </DialogAddCalendarLink>
             <h4>LOCATION</h4>
