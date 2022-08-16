@@ -6,10 +6,12 @@ import {
   DialogGrayBox,
   DialogDescWrapper,
   DialogEventDetailsWrapper,
+  DialogEventDetailsDiv,
   DialogDescPar,
   DialogBody,
   DialogAddCalendarLink,
   DialogFooter,
+  DialogFooterPar,
   DialogFooterSeparator,
 } from "./CalendarStyles";
 import { FaTimes } from "react-icons/fa";
@@ -22,8 +24,6 @@ function DialogBox(props) {
         open={props.openDialog}
         onClose={() => props.setOpenDialog(false)}
         maxWidth="lg"
-        aria-labelledby="dialog-title"
-        aria-describedby="dialog-description"
       >
         <DialogHeader>
           <DialogImageWrapper>
@@ -36,8 +36,8 @@ function DialogBox(props) {
           <DialogGrayBox>
             <FaTimes onClick={() => props.setOpenDialog(false)} />
             <p>
-              {props.monthShortName} <br></br>
-              {props.dayNumber}
+              {props.monthShortName} <br />
+              <span>{props.dayNumber}</span>
             </p>
             <h4>{props.title}</h4>
             <small>{props.category}</small>
@@ -46,50 +46,54 @@ function DialogBox(props) {
         <DialogBody>
           <DialogDescWrapper>
             <DialogDescPar>DESCRIPTION</DialogDescPar>
-            {props.description && (
+            {props.description ? (
               <div
                 dangerouslySetInnerHTML={{ __html: props.description }}
               ></div>
+            ) : (
+              <p>There is no description for this event</p>
             )}
           </DialogDescWrapper>
           <DialogEventDetailsWrapper>
-            <h4>DATE AND TIME</h4>
-            <div>
+            <DialogEventDetailsDiv>
+              <h4>DATE AND TIME</h4>
               <p>
                 {props.dayShortName}, {props.dayNumber} {props.monthShortName}{" "}
                 {props.yearNumber}
                 {props.fullDayEvent === "TRUE" ? " - Full Day Event" : ""}
               </p>
-            </div>
-            <DialogAddCalendarLink
-              to="/"
-              onClick={() => {
-                saveCallInvite(props);
-              }}
-            >
-              Add to Calendar
-            </DialogAddCalendarLink>
-            <h4>LOCATION</h4>
-            <div>
+              <DialogAddCalendarLink
+                to="/"
+                onClick={() => {
+                  saveCallInvite(props);
+                }}
+              >
+                Add to Calendar
+              </DialogAddCalendarLink>
+            </DialogEventDetailsDiv>
+            <DialogEventDetailsDiv>
+              <h4>LOCATION</h4>
               <p>{props.addressLine1} </p>
               {props.addressLine2 && <p>{props.addressLine2} </p>}
               <p> {props.city} </p>
               <p> {props.postCode} </p>
               <p> {props.country} </p>
-            </div>
-            <DialogAddCalendarLink to="/">View Map</DialogAddCalendarLink>
+              <DialogAddCalendarLink to="/">View Map</DialogAddCalendarLink>
+            </DialogEventDetailsDiv>
           </DialogEventDetailsWrapper>
         </DialogBody>
         <DialogFooter>
           <DialogFooterSeparator />
-          <p>
-            Created by {props.author} on {props.createdDate} at{" "}
-            {props.createdTime}
-          </p>
-          <p>
-            Modified by {props.editor} on {props.modifiedDate} at{" "}
-            {props.modifiedTime}
-          </p>
+          <DialogFooter>
+            <DialogFooterPar>
+              Created by {props.author} on {props.createdDate} at{" "}
+              {props.createdTime}
+            </DialogFooterPar>
+            <DialogFooterPar>
+              Modified by {props.editor} on {props.modifiedDate} at{" "}
+              {props.modifiedTime}
+            </DialogFooterPar>
+          </DialogFooter>
         </DialogFooter>
       </Dialog>
     </>

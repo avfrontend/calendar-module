@@ -28,7 +28,6 @@ const CalendarEvents = () => {
     });
     const events = await response.json();
     setEvents(events.value);
-    console.log(events.value);
   };
 
   useEffect(() => {

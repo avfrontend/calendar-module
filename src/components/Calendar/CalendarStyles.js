@@ -80,10 +80,15 @@ export const DialogGrayBox = styled.div`
   flex-direction: column;
   justify-content: space-between;
   p {
-    font-weight: bold;
+    font-size: 14px;
+    font-weight: 600;
+    span {
+      font-size: 18px;
+    }
   }
+
   h4 {
-    font-weight: 800;
+    font-weight: 600;
   }
   svg {
     position: absolute;
@@ -95,6 +100,12 @@ export const DialogGrayBox = styled.div`
   }
   @media screen and (max-width: 768px) {
     width: 100%;
+    p {
+      margin-bottom: 10px;
+    }
+    h4 {
+      margin-bottom: 10px;
+    }
   }
 `;
 
@@ -166,9 +177,6 @@ export const DialogDescPar = styled.p`
 export const DialogEventDetailsWrapper = styled.div`
   width: 30%;
   padding: 10px;
-  div {
-    margin: 10px 0;
-  }
   h4 {
     font-size: 14px;
     font-weight: 600;
@@ -177,18 +185,36 @@ export const DialogEventDetailsWrapper = styled.div`
   p {
     font-size: 14px;
   }
+  a {
+    margin-top: 10px;
+    display: inline-block;
+  }
   @media screen and (max-width: 768px) {
     width: 100%;
+  }
+`;
+
+export const DialogEventDetailsDiv = styled.div`
+  &:last-child {
+    margin-top: 20px;
   }
 `;
 
 export const DialogAddCalendarLink = styled(Link)`
   color: rgb(3, 120, 124);
   text-decoration: none;
+  font-size: 14px;
 `;
 
 export const DialogFooter = styled.div`
   padding: 10px;
+`;
+
+export const DialogFooterPar = styled.p`
+  font-size: 14px;
+  &:last-child {
+    margin-top: 5px;
+  }
 `;
 
 export const DialogFooterSeparator = styled.div`
