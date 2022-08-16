@@ -17,6 +17,7 @@ const url =
 
 const CalendarEvents = () => {
   const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [openDialog, setOpenDialog] = useState(false);
   const [dialogData, setDialogData] = useState(null);
 
@@ -28,6 +29,7 @@ const CalendarEvents = () => {
     });
     const events = await response.json();
     setEvents(events.value);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -36,22 +38,24 @@ const CalendarEvents = () => {
   return (
     <>
       <Events>
-        {events.map((event) => {
-          const { ID, Title, EventStartDate } = event;
-          return (
-            <EventsItem key={ID}>
-              <EventLink
-                to="/"
-                onClick={() => {
-                  setOpenDialog(true);
-                  setDialogData(event);
-                }}
-              >
-                {Title} - {dateFriendly(EventStartDate)}
-              </EventLink>
-            </EventsItem>
-          );
-        })}
+        {loading
+          ? "Loading ..."
+          : events.map((event) => {
+              const { ID, Title, EventStartDate } = event;
+              return (
+                <EventsItem key={ID}>
+                  <EventLink
+                    to="/"
+                    onClick={() => {
+                      setOpenDialog(true);
+                      setDialogData(event);
+                    }}
+                  >
+                    {Title} - {dateFriendly(EventStartDate)}
+                  </EventLink>
+                </EventsItem>
+              );
+            })}
       </Events>
 
       {dialogData && (
