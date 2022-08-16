@@ -1,6 +1,6 @@
-# How to start the project
+# Calendar Module
 
-- Run npm install
-- Run npm start
+#### Run The App Locally
 
-# Notes
+- Run `npm install`
+- Run `npm start`
