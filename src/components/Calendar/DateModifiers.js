@@ -66,6 +66,13 @@ export const formatDate = (givenDate) => {
   return eventDay + "/" + eventMonth + "/" + eventYear;
 };
 
+export const formatDateDashes = (givenDate) => {
+  let eventYear = Number(givenDate.substring(4, 0));
+  let eventMonth = Number(givenDate.substring(7, 5));
+  let eventDay = Number(givenDate.substring(10, 8));
+  return eventYear + "-" + eventMonth + "-" + eventDay;
+};
+
 export const removeSymbolsDate = (givenDate) => {
   let eventDate = givenDate.replace(/-/g, "").replace(/:/g, "");
   return eventDate;

@@ -10,6 +10,7 @@ import {
   formatTime,
   formatDate,
   removeSymbolsDate,
+  formatDateDashes,
 } from "./DateModifiers";
 
 const url =
@@ -32,6 +33,17 @@ const CalendarEvents = () => {
     setLoading(false);
   };
 
+  const sortedEvents = events.sort(function (a, b) {
+    return (
+      new Date(formatDateDashes(a.EventStartDate)) -
+      new Date(formatDateDashes(b.EventStartDate))
+    );
+  });
+
+  const filteredEvents = sortedEvents.filter((obj) => {
+    return new Date(formatDateDashes(obj.EventStartDate)) > new Date();
+  });
+
   useEffect(() => {
     getEvents();
   }, []);
@@ -40,7 +52,7 @@ const CalendarEvents = () => {
       <Events>
         {loading
           ? "Loading ..."
-          : events.map((event) => {
+          : filteredEvents.map((event) => {
               const { ID, Title, EventStartDate } = event;
               return (
                 <EventsItem key={ID}>
